@@ -6,3 +6,5 @@
   - Dockerfile
   - requirements.txt    
   - app.py
+
+Simple flask app to lsit & create users in a MySQL database.
