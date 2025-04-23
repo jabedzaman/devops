@@ -1,5 +1,5 @@
 services:
-  web:
+  app:
     build: ./app
     ports:
       - "8000:8000"
@@ -7,10 +7,13 @@ services:
       - db
 
   db:
-    image: yobasystems/alpine-mariadb:latest
-    restart: always
-    ports:
-      - "3306:3306"
+    image: postgres:14
     environment:
-      MYSQL_ROOT_PASSWORD: password
-      MYSQL_DATABASE: testdb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: devops
+      - pgdata:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+
+volumes:
+  pgdata:

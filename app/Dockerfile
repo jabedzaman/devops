@@ -1,6 +1,9 @@
-FROM python:3.10
+FROM node:18-alpine
+
 WORKDIR /app
-COPY requirements.txt .
-RUN pip install -r requirements.txt
+COPY package*.json ./
+RUN npm install
+
 COPY . .
-CMD ["python", "app.py"]
+EXPOSE 8000
+CMD ["node", "index.js"]
