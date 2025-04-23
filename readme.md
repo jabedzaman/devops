@@ -14,3 +14,5 @@ Simple flask app to lsit & create users in a MySQL database.
 - Docker
 - Docker Compose
 - Jenkins
+
+Uses jenkins to build and deploy the app.
