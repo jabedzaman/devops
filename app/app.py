@@ -1,14 +1,27 @@
+import time
 from flask import Flask, request, jsonify
 import mysql.connector
+from mysql.connector import Error
 
 app = Flask(__name__)
 
-db = mysql.connector.connect(
-    host="localhost",
-    user="root",
-    password="password",
-    database="testdb"
-)
+def connect_db():
+    retry_attempts = 5
+    for _ in range(retry_attempts):
+        try:
+            db = mysql.connector.connect(
+                host="db",
+                user="root",
+                password="password",
+                database="testdb"
+            )
+            return db
+        except Error as e:
+            print(f"Error: {e}, retrying...")
+            time.sleep(5)  # Wait 5 seconds before retrying
+    raise Exception("Could not connect to database after several attempts")
+
+db = connect_db()
 cursor = db.cursor()
 cursor.execute("CREATE TABLE IF NOT EXISTS users (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255))")
 
