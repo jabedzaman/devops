@@ -8,3 +8,9 @@
   - app.py
 
 Simple flask app to lsit & create users in a MySQL database.
+
+## Prerequisites
+
+- Docker
+- Docker Compose
+- Jenkins
