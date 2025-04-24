@@ -1,7 +1,7 @@
 services:
   app:
     # build: ./app
-    image: jabedzaman/devops-api.git
+    image: jabedzaman/devops-api:latest
     ports:
       - "8000:8000"
     depends_on:
