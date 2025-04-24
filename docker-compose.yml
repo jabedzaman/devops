@@ -1,6 +1,7 @@
 services:
   app:
-    build: ./app
+    # build: ./app
+    image: jabedzaman/devops-api.git
     ports:
       - "8000:8000"
     depends_on:
