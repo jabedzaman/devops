@@ -15,4 +15,4 @@ app.post('/users', async (req, res) => {
     res.json(rows[0]);
 });
 
-app.listen(8000, () => console.log('Server ready'));
+app.listen(8000, () => console.log('Server ready at port 8000'));
